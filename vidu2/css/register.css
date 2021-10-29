@@ -1,0 +1,51 @@
+body {
+  background-color: aqua;
+}
+.register {
+  width: 350px;
+  height: 500px;
+  background-color: yellow;
+  border: 1px solid grey;
+  border-radius: 10px;
+  text-align: center;
+  margin: 0 auto;
+}
+.register h3 {
+  display: inline-block;
+  color: #868787;
+}
+.register input {
+  width: 200px;
+  height: 40px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+  padding-left: 20px;
+}
+.register button {
+  width: 100px;
+  height: 40px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #45a049;
+  color: white;
+  margin-top: 5px;
+}
+.register p {
+  margin-top: 20px;
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+.dangki button {
+  color: white;
+}
+.div_left {
+  float: left;
+  margin-left: 60px;
+
+}
+.div_right {
+  float: right;
+  margin-right: 60px;
+}
