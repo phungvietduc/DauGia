@@ -8,8 +8,8 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Danh sách sản phẩm</title>
 </head>
 
 <body>
@@ -53,7 +53,8 @@
                                     <td><?php echo $row['GiaSP'] ?></td>
                                     <td><?php echo $row['SoLuong'] ?></td>
                                     <td><?php echo $row['TenLoaiSP'] ?></td>
-
+                                    <td><a href="update-items.php?id=<?php  $row['MaSP'];?>">Sửa</a></td>
+                                    <td><a href="update-items.php?id=<?php  $row['MaSP'];?>">Xóa</a></td>
                                 </tr>
                         <?php
                             }
