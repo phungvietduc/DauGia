@@ -1,0 +1,54 @@
+body{
+    background-color: aqua;
+}
+.login{
+    width: 300px;
+    height: 350px;
+    background-color: yellow;
+    border: 1px solid grey;
+    border-radius: 10px ;
+    text-align: center;
+    margin: 0 auto;
+}
+.login h3{
+    display: inline-block;
+    color: #868787;
+}
+.login input{
+    width: 200px;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 5px ;
+    border: 1px solid black;
+    padding-left: 20px;
+}
+.check input{
+    width: 10px;
+    height: 10px;
+}
+.login button{
+    width: 220px;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 5px ;
+    border: none;
+    background-color: #45a049;
+    color: white;
+    margin-top: 5px;
+}
+.check{
+    float: left;
+    padding-left: 40px;
+    
+    
+}
+.login a{
+    float: right;
+    padding-right: 40px;
+    text-decoration: none;
+    margin-bottom: 5px;
+    
+}
+.dangki button{
+    color: white;
+}

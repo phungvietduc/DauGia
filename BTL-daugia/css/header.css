@@ -1,0 +1,14 @@
+header{
+    display: flex;
+    align-items: center;
+    padding: 10px 10%;
+    color: white;
+    background-color: #24252a;
+    height: 30px;
+}
+header h3{
+    display: inline-block;
+    padding: 50px;
+    text-align: center;
+    text-transform: uppercase;
+}
