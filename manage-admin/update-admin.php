@@ -13,6 +13,23 @@
 </head>
 
 <body>
+<?php
+    include('../config/connect.php');
+
+    $id = $_GET['id'];
+
+    $sql = "SELECT * FROM qlytaikhoanadmin WHERE idad = $id";
+
+    $res = mysqli_query($conn, $sql);
+    if ($res) {
+        $row = mysqli_fetch_assoc($res);
+        $hoten = $row['HoTen'];
+        $tk= $row['TenDangNhap'];
+        $mk = $row['MatKhau'];
+        $lv = $row['adminlv'];
+        $cv = $row['Work'];
+    }
+    ?>
     <div class="container-fluid">
         <div class="card">
             <div  class="card-header">
@@ -31,25 +48,25 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Họ và tên</label>
-                                <input name="hoten" type="text" class="form-control" id="exampleInputName" value="">
+                                <input name="hoten" type="text" class="form-control" id="exampleInputName" value="<?php echo $hoten ?>">
                                 <div class="form-group">
                                     <label for="exampleInput">Tên đăng nhập</label>
-                                    <input name="tk" type="text" class="form-control" id="exampleInput" value="">
+                                    <input name="tk" type="text" class="form-control" id="exampleInput" value="<?php  echo $tk ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInput">Mật Khẩu</label>
-                                    <input name="pass" type="text" class="form-control" id="exampleInput">
+                                    <input name="pass" type="text" class="form-control" id="exampleInput" value="<?php echo $mk ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInput">Admin level</label>
-                                    <input name="lv" type="text" class="form-control" id="exampleInput">
+                                    <input name="lv" type="text" class="form-control" id="exampleInput" value="<?php echo $lv ?>">
                                 </div>
                                 <br>
                                 <tr>
                                     <td class="form-group">Công Việc</td>
                                     <td>
                                         <select id="permission" name="cv">
-                                            <option value=""></option>
+                                            <option value=""><?php echo $cv ?></option>
                                             <option value="Admin quản lí sản phẩm">Admin quản lí sản phẩm</option>
                                             <option value="Admin quản lí người dùng">Admin quản lí người dùng</option>
                                             <option value="Admin quản lí phiên đấu giá">Admin quản lí phiên đấu giá</option>
