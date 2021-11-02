@@ -8,9 +8,9 @@ if( isset($_POST["submit"]) && $_POST["username"] != '' && $_POST["password"] !=
     $user = mysqli_query($conn, $sql);
     if(mysqli_num_rows($user)>0){
         $_SESSION["user"] = $username;
-        header("location:index.php")
+        header("location:hienthi/index.php");
     }else{
-        echo "tài khoản hoặc mật khẩu không chính xác";
+        echo '<script language="javascript">alert("Tài khoản hoặc mật khẩu không chính sác"); window.location="register.php";</script>';
     }
 }else{
     header("location:login.php");
