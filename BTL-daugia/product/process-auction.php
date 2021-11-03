@@ -10,8 +10,6 @@ if (isset($_POST['submit']) && $_POST['pname'] != '' &&   $_POST['loaisp'] != ''
     $target_dir = "../img/sanpham/";
     $target_file = '';
     $target_file = $target_dir . basename($_FILES["image"]["name"]);
-    $uploadOK = 1;
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     if (isset($_POST["submit"])) {
         move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
         $add = "INSERT INTO phiendaugia (TenSP,MaLoaiSP,HinhAnh,GiaKĐ,MoTaSP) VALUES ('$pname','$loaisp','$target_file','$gia','$mota')";

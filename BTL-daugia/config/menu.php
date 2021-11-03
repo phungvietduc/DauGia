@@ -26,7 +26,7 @@ $bb = mysqli_query($conn, "SELECT * FROM phiendaugia");
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="../hienthi/proauction.php">Trang chủ</a>
+            <a class="nav-link active" aria-current="page" href="../hienthi/index.php">Trang chủ</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../product/auction.php">Đấu giá của tôi</a>
@@ -35,9 +35,8 @@ $bb = mysqli_query($conn, "SELECT * FROM phiendaugia");
             <a class="nav-link" href="#">Giỏ hàng</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true" data-toggle="dropdown">
-              Tôi
-            </a>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">Tôi</a>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="#">Cá nhân</a></li>
               <li><a class="dropdown-item" href="#">Ví</a></li>
@@ -51,7 +50,7 @@ $bb = mysqli_query($conn, "SELECT * FROM phiendaugia");
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="btn btn-outline-success bg-light" type="submit">Search</button>
         </form>
       </div>
     </div>
