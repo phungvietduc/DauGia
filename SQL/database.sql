@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 29, 2021 lúc 03:17 PM
+-- Thời gian đã tạo: Th10 03, 2021 lúc 04:51 AM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.10
 
@@ -32,14 +32,6 @@ CREATE TABLE `loaisp` (
   `TenLoaiSP` varchar(99) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Đang đổ dữ liệu cho bảng `loaisp`
---
-
-INSERT INTO `loaisp` (`MaLoaiSP`, `TenLoaiSP`) VALUES
-(1, 'Điện thoại thông minh'),
-(2, 'Laptop');
-
 -- --------------------------------------------------------
 
 --
@@ -49,10 +41,7 @@ INSERT INTO `loaisp` (`MaLoaiSP`, `TenLoaiSP`) VALUES
 CREATE TABLE `nguoidung` (
   `Id` int(11) NOT NULL,
   `HoTen` varchar(99) NOT NULL,
-  `DiaChi` varchar(99) NOT NULL,
   `Email` varchar(99) NOT NULL,
-  `Sdt` text NOT NULL,
-  `cmnd` int(11) NOT NULL,
   `TenDangNhap` text NOT NULL,
   `MatKhau` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -61,9 +50,9 @@ CREATE TABLE `nguoidung` (
 -- Đang đổ dữ liệu cho bảng `nguoidung`
 --
 
-INSERT INTO `nguoidung` (`Id`, `HoTen`, `DiaChi`, `Email`, `Sdt`, `cmnd`, `TenDangNhap`, `MatKhau`) VALUES
-(4, 'Nguyễn Văn B', 'Minh Quang- Tam Đảo- Vĩnh Phúc', 'a@gmail.com', '0987654321', 2147483647, 'aaaa', 'a123'),
-(5, 'Trần Thị C', 'Tây Sơn-Đống Đa- Hà Nội', 'c@gmail.com', '0123456789', 2147483647, 'cccc', 'c123');
+INSERT INTO `nguoidung` (`Id`, `HoTen`, `Email`, `TenDangNhap`, `MatKhau`) VALUES
+(4, 'Nguyễn Văn B', 'a@gmail.com', 'aaaa', 'a123'),
+(5, 'Trần Thị C', 'c@gmail.com', 'cccc', 'c123');
 
 -- --------------------------------------------------------
 
@@ -73,13 +62,12 @@ INSERT INTO `nguoidung` (`Id`, `HoTen`, `DiaChi`, `Email`, `Sdt`, `cmnd`, `TenDa
 
 CREATE TABLE `phiendaugia` (
   `MaPhien` int(11) NOT NULL,
-  `TGTao` date NOT NULL,
-  `TGBatDau` date NOT NULL,
-  `TGKetThuc` date NOT NULL,
-  `MaSP` int(11) NOT NULL,
-  `NguoiBan` varchar(99) NOT NULL,
-  `GiaSP` int(50) NOT NULL,
-  `TrangThai` text NOT NULL
+  `TGconlai` time NOT NULL,
+  `TenSP` varchar(11) NOT NULL,
+  `HinhAnh` text NOT NULL,
+  `MaLoaiSP` int(11) NOT NULL,
+  `GiaKĐ` int(50) NOT NULL,
+  `MoTaSP` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -116,20 +104,19 @@ INSERT INTO `qlytaikhoanadmin` (`idad`, `HoTen`, `TenDangNhap`, `MatKhau`, `admi
 CREATE TABLE `sanpham` (
   `MaSP` int(11) NOT NULL,
   `TenSP` varchar(99) NOT NULL,
-  `image` char(50) NOT NULL,
-  `ThongTinSP` varchar(555) NOT NULL,
-  `GiaSP` text NOT NULL,
-  `DonViTinh` text NOT NULL,
-  `MaLoaiSP` int(10) NOT NULL
+  `image` text NOT NULL,
+  `ThongTinSP` varchar(500) NOT NULL,
+  `GiaSP` int(11) NOT NULL,
+  `LoaiSP` varchar(99) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `sanpham`
 --
 
-INSERT INTO `sanpham` (`MaSP`, `TenSP`, `image`, `ThongTinSP`, `GiaSP`, `DonViTinh`, `MaLoaiSP`) VALUES
-(1, 'Iphone12', 'iphone12.jpg', 'Sản phẩm đẹp', '20000000VND', '1', 1),
-(2, 'Macbook-air-m1-2020', 'macbook-air-m1-2020.jpg', 'Thiết kế cao cấp mỏng nhẹ', '30000000VND', '1', 2);
+INSERT INTO `sanpham` (`MaSP`, `TenSP`, `image`, `ThongTinSP`, `GiaSP`, `LoaiSP`) VALUES
+(4, 'macbook2', '', 'Thiết kế mỏng nhẹ', 40000000, 'Điện thoại di động'),
+(5, 'SS glaxy Z phone 3', 'tìm kiếm theo chiều sâu.png', 'Đắt', 10000000, 'Điện thoại di động');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -151,7 +138,8 @@ ALTER TABLE `nguoidung`
 -- Chỉ mục cho bảng `phiendaugia`
 --
 ALTER TABLE `phiendaugia`
-  ADD PRIMARY KEY (`MaPhien`);
+  ADD PRIMARY KEY (`MaPhien`),
+  ADD KEY `loaihang` (`MaLoaiSP`);
 
 --
 -- Chỉ mục cho bảng `qlytaikhoanadmin`
@@ -163,8 +151,7 @@ ALTER TABLE `qlytaikhoanadmin`
 -- Chỉ mục cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
-  ADD PRIMARY KEY (`MaSP`),
-  ADD KEY `MaLoaiSP` (`MaLoaiSP`);
+  ADD PRIMARY KEY (`MaSP`);
 
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
@@ -174,13 +161,19 @@ ALTER TABLE `sanpham`
 -- AUTO_INCREMENT cho bảng `loaisp`
 --
 ALTER TABLE `loaisp`
-  MODIFY `MaLoaiSP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `MaLoaiSP` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT cho bảng `nguoidung`
 --
 ALTER TABLE `nguoidung`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT cho bảng `phiendaugia`
+--
+ALTER TABLE `phiendaugia`
+  MODIFY `MaPhien` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT cho bảng `qlytaikhoanadmin`
@@ -192,17 +185,17 @@ ALTER TABLE `qlytaikhoanadmin`
 -- AUTO_INCREMENT cho bảng `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `MaSP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `MaSP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Các ràng buộc cho bảng `sanpham`
+-- Các ràng buộc cho bảng `phiendaugia`
 --
-ALTER TABLE `sanpham`
-  ADD CONSTRAINT `sanpham_ibfk_1` FOREIGN KEY (`MaLoaiSP`) REFERENCES `loaisp` (`MaLoaiSP`);
+ALTER TABLE `phiendaugia`
+  ADD CONSTRAINT `loaisp` FOREIGN KEY (`MaLoaiSP`) REFERENCES `loaisp` (`MaLoaiSP`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
