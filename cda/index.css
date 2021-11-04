@@ -1,0 +1,87 @@
+body {
+  color: #eee;
+}
+#countdown {
+  width: 280px;
+  height: 100px;
+  text-align: center;
+  background: #222;
+  background-image: -webkit-linear-gradient(top, #222, #333, #333, #222);
+  background-image: -moz-linear-gradient(top, #222, #333, #333, #222);
+  background-image: -ms-linear-gradient(top, #222, #333, #333, #222);
+  background-image: -o-linear-gradient(top, #222, #333, #333, #222);
+  border: 1px solid #111;
+  border-radius: 5px;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);
+  padding: 20px 0px;
+  position: absolute;
+}
+#countdown #tiles {
+  position: relative;
+  z-index: 1;
+}
+
+#countdown #tiles > span {
+  width: 31px;
+  max-width: 46px;
+  font: bold 24px "Droid Sans", Arial, sans-serif;
+  text-align: center;
+  color: #111;
+  background-color: #ddd;
+  background-image: -webkit-linear-gradient(top, #bbb, #eee);
+  background-image: -moz-linear-gradient(top, #bbb, #eee);
+  background-image: -ms-linear-gradient(top, #bbb, #eee);
+  background-image: -o-linear-gradient(top, #bbb, #eee);
+  border-top: 1px solid #fff;
+  border-radius: 3px;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.7);
+  margin: 0 19px;
+  padding: 7px 4px;
+  display: inline-block;
+  position: relative;
+}
+
+#countdown #tiles > span:before {
+  content: "";
+  width: 100%;
+  height: 13px;
+  background: #111;
+  display: block;
+  padding: 0 3px;
+  position: absolute;
+  top: 41%;
+  left: -3px;
+  z-index: -1;
+}
+
+#countdown #tiles > span:after {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background: #eee;
+  border-top: 1px solid #333;
+  display: block;
+  position: absolute;
+  top: 48%;
+  left: 0;
+}
+
+#countdown .labels {
+  width: 100%;
+  height: 25px;
+  text-align: center;
+  position: absolute;
+  bottom: 2px;
+}
+
+#countdown .labels li {
+  width: 30px;
+  padding: 3px 20px;
+  font: bold 15px "Droid Sans", Arial, sans-serif;
+  color: #f47321;
+  text-shadow: 1px 1px 0px #000;
+  text-align: center;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-right:26px;
+}
