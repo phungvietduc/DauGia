@@ -1,4 +1,5 @@
 <?php
+include('../config/session.php');
 include '../config/start.php';
 include '../config/config.php';
 include '../config/header.php';
@@ -28,7 +29,7 @@ $layra = mysqli_query($conn, "SELECT phiendaugia.*, loaisp.TenLoaiSP FROM phiend
                             <div class="form-group">
                                 <label for="">Loại sản phẩm</label>
                                 <select name="loaisp" class="form-control">
-                                    <option value="">--------------------Loại hàng--------------------</option>
+                                    <option value="">-----------------Loại hàng-----------------</option>
                                     <?php foreach ($lh as $key => $value) {
                                     ?>
                                         <option value="<?php echo $value['MaLoaiSP'] ?>">
@@ -60,7 +61,7 @@ $layra = mysqli_query($conn, "SELECT phiendaugia.*, loaisp.TenLoaiSP FROM phiend
             <div class="col-md-9">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h3 class="panel-titel text-center" style="background-color: aqua;">Đấu giá của tôi</h3>
+                        <h3 class="panel-titel text-center" style="background-color: aqua;">Các phiên đấu giá</h3>
                     </div>
                     <div class="panel-body">
                         <table class="table table-bordered table-hover">
