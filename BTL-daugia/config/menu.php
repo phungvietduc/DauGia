@@ -3,6 +3,8 @@ include 'config.php';
 $loaih = "SELECT * from phiendaugia,loaisp where phiendaugia.MaLoaiSP = loaisp.MaLoaiSP order by phiendaugia.updated_at desc limit 0,5";
 $aa = mysqli_query($conn, "SELECT * FROM loaisp");
 $bb = mysqli_query($conn, "SELECT * FROM phiendaugia");
+$user = "SELECT * from user";
+$cc = mysqli_query($conn,$user);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,18 +57,6 @@ $bb = mysqli_query($conn, "SELECT * FROM phiendaugia");
       </div>
     </div>
   </nav>
-  <div class="bg-dark" style="margin-top: 0px;">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <?php
-          foreach ($aa as $item) {
-            echo '<li class="nav-item " style="display: inline-block ;"><a class="nav-link text-light" href="category.php?id=' . $item['MaLoaiSP'] . '">' . $item['TenLoaiSP'] . '</a></li>';
-          } ?>
-        </div>
-      </div>
-    </div>
-  </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
