@@ -34,7 +34,7 @@ $cc = mysqli_query($conn,$user);
             <a class="nav-link" href="../product/auction.php">Đấu giá của tôi</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Giỏ hàng</a>
+            <a class="nav-link" href="../product/giohang.php">Giỏ hàng</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">Tôi</a>
@@ -46,7 +46,7 @@ $cc = mysqli_query($conn,$user);
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
+              <li><a class="dropdown-item" href="../logout.php">Đăng xuất</a></li>
             </ul>
           </li>
         </ul>

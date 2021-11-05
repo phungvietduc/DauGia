@@ -73,8 +73,6 @@ $layra = mysqli_query($conn, "SELECT phiendaugia.*, loaisp.TenLoaiSP FROM phiend
                                     <th>Hình ảnh</th>
                                     <th>Giá khởi điểm</th>
                                     <th>Mô tả</th>
-                                    <th></th>
-                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -86,16 +84,6 @@ $layra = mysqli_query($conn, "SELECT phiendaugia.*, loaisp.TenLoaiSP FROM phiend
                                         <td><img src="<?php echo $value['HinhAnh'] ?>" alt="" width="50px"></td>
                                         <td><?php echo $value['GiaKĐ'] ?></td>
                                         <td><?php echo $value['MoTaSP'] ?></td>
-                                        <th>
-                                            <button class="btn btn-warning">
-                                                <a href="./edit-auction.php?id=<?php echo $value['MaPhien'] ?>" style="text-decoration: none; color :aliceblue">edit</a>
-                                            </button>
-                                        </th>
-                                        <th>
-                                            <button class="btn btn-danger">
-                                                <a class="text-decoration-none text-white" onclick="return Del('<?php echo $value['TenSP']; ?>')" href="delete-auction.php?id=<?php echo $value['MaPhien']; ?>">Xóa</a>
-                                            </button>
-                                        </th>
                                     </tr>
                                 <?php }
                                 ?>

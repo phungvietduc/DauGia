@@ -12,6 +12,7 @@ if ( isset($_POST['submit']) && $_POST['username'] != '' && $_POST['email'] != '
     $sql = "SELECT * FROM user WHERE username='$username' OR email = '$email' ";
     //$conn = mysqli_connect("localhost", "root", "", "vidu");
     $old = mysqli_query($conn, $sql);
+    $password=md5($password);
     if (mysqli_num_rows($old) > 0) {
         echo '<script language="javascript">alert("Tài khoản đã tồn tại"); window.location="register.php";</script>';
     }

@@ -41,7 +41,7 @@ $bb = mysqli_query($conn, "SELECT * FROM phiendaugia");
                     ?>
                 </div>
                 <div class="col-md-8">
-                    <h3 style="text-align: center; color: rgb(0, 110, 255)">Chi tiết sản phẩm: <?php echo $value['TenSP'] ?></h3>
+                    <h3 style=" color: rgb(0, 110, 255)">Chi tiết sản phẩm: <?php echo $value['TenSP'] ?></h3>
                     <h4 style="margin-top: 30px;">Giá khởi điểm: <?php echo number_format($value['GiaKĐ']) ?> VND</h4>
                     <h4 style="margin-top: 30px;">Thời gian còn lại</h4>
                     <br>
@@ -62,9 +62,6 @@ $bb = mysqli_query($conn, "SELECT * FROM phiendaugia");
         </div>
         <hr style="height: 3px;" />
     </div>
-    <?php
-    echo "tên user ". $_SESSION["user"]. ".";
-    ?>
     <script src="./countdown.js"></script>
 </body>
 

@@ -22,7 +22,7 @@
                 Nhớ tài khoản
             </div>
             <br>
-            <button type="submit" name="submit">Đăng nhập</button>
+            <button type="submit" name="submit" style="background-color: blue;">Đăng nhập</button>
             <a href="#">
                 Quên mật khẩu?
             </a>
@@ -31,8 +31,8 @@
             <br>
             <hr  width="80%" size="3px" align="center" color="grey"/>
         </form>
-        <form action="register.php" method="POST">
-            <button type="submit" name="submit">Tạo tài khoản</button>
+        <form action="register.php" method="POST" >
+            <button type="submit" name="submit" style="background-color: blue;">Tạo tài khoản</button>
         </form>
     </div>
 
