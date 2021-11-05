@@ -9,75 +9,53 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Sửa Admin</title>
+    <title>Sửa thông tin người dùng</title>
 </head>
 
 <body>
 <?php include('../bridge/check-login-admin.php');?>
-<?php
+    <?php
     include('../config/connect.php');
 
     $id = $_GET['id'];
 
-    $sql = "SELECT * FROM qlytaikhoanadmin WHERE idad = $id";
+    $sql = "SELECT * FROM nguoidung WHERE Id = $id";
 
     $res = mysqli_query($conn, $sql);
     if ($res) {
         $row = mysqli_fetch_assoc($res);
         $hoten = $row['HoTen'];
+        $email = $row['Email'];
         $tk= $row['TenDangNhap'];
-        $mk = $row['MatKhau'];
-        $lv = $row['adminlv'];
-        $cv = $row['Work'];
     }
     ?>
     <div class="container-fluid">
         <div class="card">
-            <div  class="card-header">
+            <div class="card-header">
                 <h2>Sửa thông tin</h2>
             </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-md-6">
-                        <form action="process-update-admin.php" method="POST">
-
+                        <form action="process-update-member.php" method="POST">
                             <div class="form-group">
                                 <label for="exampleInputEmail1"></label>
                                 <input name="id" type="text" class="form-control" id="exampleInputName" value="<?php echo $_GET['id'] ?>" hidden>
-
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Họ và tên</label>
+                                <label for="exampleInputEmail1">Họ và Tên</label>
                                 <input name="hoten" type="text" class="form-control" id="exampleInputName" value="<?php echo $hoten ?>">
-                                <div class="form-group">
-                                    <label for="exampleInput">Tên đăng nhập</label>
-                                    <input name="tk" type="text" class="form-control" id="exampleInput" value="<?php  echo $tk ?>">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInput">Mật Khẩu</label>
-                                    <input name="pass" type="text" class="form-control" id="exampleInput" value="<?php echo $mk ?>">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInput">Admin level</label>
-                                    <input name="lv" type="text" class="form-control" id="exampleInput" value="<?php echo $lv ?>">
-                                </div>
-                                <br>
-                                <tr>
-                                    <td class="form-group">Công Việc</td>
-                                    <td>
-                                        <select id="permission" name="cv">
-                                            <option value=""><?php echo $cv ?></option>
-                                            <option value="Admin quản lí sản phẩm">Admin quản lí sản phẩm</option>
-                                            <option value="Admin quản lí người dùng">Admin quản lí người dùng</option>
-                                            <option value="Admin quản lí phiên đấu giá">Admin quản lí phiên đấu giá</option>
-                                            <option value="Admin quản lí hệ thống">Admin quản lí hệ thống</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <br>
-                                <br>
-                                <button name="btsua" type="submit" class="btn btn-primary" style="margin-top:15px">Sửa</button>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInput">Email</label>
+                                <input name="email" type="email" class="form-control" id="exampleInput" value="<?php echo $email ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInput">Tên đăng nhập</label>
+                                <input name="tk" type="textr" class="form-control" id="exampleInput" value="<?php echo $tk ?>">
+                            </div>
+                            <button name="btsua" type="submit" class="btn btn-primary" style="margin-top:15px">Sửa</button>
                         </form>
                     </div>
 
@@ -86,7 +64,6 @@
         </div>
         <div class="col-md-3"></div>
     </div>
-
 
 
 

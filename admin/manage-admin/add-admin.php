@@ -51,6 +51,7 @@
                                         <option value="Admin quản lí sản phẩm">Admin quản lí sản phẩm</option>
                                         <option value="Admin quản lí người dùng">Admin quản lí người dùng</option>
                                         <option value="Admin quản lí phiên đấu giá">Admin quản lí phiên đấu giá</option>
+                                        <option value="Admin quản lí hệ thống">Admin quản lí hệ thống</option>
                                     </select>
                                 </td>
                             </tr>

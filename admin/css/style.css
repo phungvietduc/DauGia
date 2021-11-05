@@ -1,0 +1,41 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.card-header{
+    text-align: center;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 10px;
+}
+thead{
+    background-color: rgba(0,0,0,.03);
+}
+a{
+    text-decoration: none !important;
+}
+/* MENU */
+.logo{
+    width: 10%;
+    float: left;
+}
+.menu{
+    line-height: 60px;
+}
+.menu ul{
+    list-style-type: none;
+}
+
+.menu ul li{
+    display: inline;
+    padding: 1%;
+    font-weight: bold;
+}
