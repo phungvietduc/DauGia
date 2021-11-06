@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 03, 2021 lúc 04:51 AM
+-- Thời gian đã tạo: Th10 06, 2021 lúc 01:23 AM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.10
 
@@ -24,6 +24,23 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `lichsuphien`
+--
+
+CREATE TABLE `lichsuphien` (
+  `MaPhien` int(11) NOT NULL,
+  `TenSP` varchar(99) NOT NULL,
+  `idNguoiban` int(11) NOT NULL,
+  `NguoiMua` varchar(99) NOT NULL,
+  `GiaKĐ` int(11) NOT NULL,
+  `GiaCuoi` int(11) NOT NULL,
+  `TGbd` date NOT NULL,
+  `TGkt` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `loaisp`
 --
 
@@ -31,6 +48,14 @@ CREATE TABLE `loaisp` (
   `MaLoaiSP` int(11) NOT NULL,
   `TenLoaiSP` varchar(99) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `loaisp`
+--
+
+INSERT INTO `loaisp` (`MaLoaiSP`, `TenLoaiSP`) VALUES
+(1, 'Máy tính'),
+(2, 'Laptop');
 
 -- --------------------------------------------------------
 
@@ -51,8 +76,7 @@ CREATE TABLE `nguoidung` (
 --
 
 INSERT INTO `nguoidung` (`Id`, `HoTen`, `Email`, `TenDangNhap`, `MatKhau`) VALUES
-(4, 'Nguyễn Văn B', 'a@gmail.com', 'aaaa', 'a123'),
-(5, 'Trần Thị C', 'c@gmail.com', 'cccc', 'c123');
+(1, 'Việt Đức', 'duc@gmail.com', 'ducipvp', 'duc123');
 
 -- --------------------------------------------------------
 
@@ -62,13 +86,23 @@ INSERT INTO `nguoidung` (`Id`, `HoTen`, `Email`, `TenDangNhap`, `MatKhau`) VALUE
 
 CREATE TABLE `phiendaugia` (
   `MaPhien` int(11) NOT NULL,
-  `TGconlai` time NOT NULL,
-  `TenSP` varchar(11) NOT NULL,
-  `HinhAnh` text NOT NULL,
-  `MaLoaiSP` int(11) NOT NULL,
-  `GiaKĐ` int(50) NOT NULL,
-  `MoTaSP` text NOT NULL
+  `TenSP` varchar(11) DEFAULT NULL,
+  `HinhAnh` text DEFAULT NULL,
+  `MaLoaiSP` int(11) DEFAULT NULL,
+  `GiaKĐ` int(50) DEFAULT NULL,
+  `MoTaSP` text DEFAULT NULL,
+  `Id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `phiendaugia`
+--
+
+INSERT INTO `phiendaugia` (`MaPhien`, `TenSP`, `HinhAnh`, `MaLoaiSP`, `GiaKĐ`, `MoTaSP`, `Id`) VALUES
+(24, 'macbook', '../img/sanpham/macbook pro.jpeg', 2, 1000, 'thiết bị mỏng nhẹ, bền , đẹp', 0),
+(25, 'dell', '../img/sanpham/dell.jfif', 2, 1000, 'core i5 chơi game tốt', 0),
+(26, 'asus', '../img/sanpham/asus.jfif', 2, 1000, 'hàng 2021', 0),
+(27, 'macbook1', '../img/sanpham/macbook.jfif', 2, 1000, 'hàng 2021', 0);
 
 -- --------------------------------------------------------
 
@@ -90,33 +124,10 @@ CREATE TABLE `qlytaikhoanadmin` (
 --
 
 INSERT INTO `qlytaikhoanadmin` (`idad`, `HoTen`, `TenDangNhap`, `MatKhau`, `adminlv`, `Work`) VALUES
-(1, 'Phùng Việt Đức', 'vietduc', 'duc123', 4, ''),
+(1, 'Phùng Việt Đức', 'vietduc', 'duc123', 4, 'Admin quản lí hệ thống'),
 (3, 'Trần Nam Quang', 'namquang', 'quang123', 1, 'Admin quản lí sản phẩm'),
 (5, 'Trịnh Khắc Hảo', 'trinhhao', 'hao123', 2, 'Admin quản lí người dùng'),
 (6, 'Nguyễn Văn A', 'admin', 'admin', 3, 'Admin quản lí phiên đấu giá');
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `sanpham`
---
-
-CREATE TABLE `sanpham` (
-  `MaSP` int(11) NOT NULL,
-  `TenSP` varchar(99) NOT NULL,
-  `image` text NOT NULL,
-  `ThongTinSP` varchar(500) NOT NULL,
-  `GiaSP` int(11) NOT NULL,
-  `LoaiSP` varchar(99) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `sanpham`
---
-
-INSERT INTO `sanpham` (`MaSP`, `TenSP`, `image`, `ThongTinSP`, `GiaSP`, `LoaiSP`) VALUES
-(4, 'macbook2', '', 'Thiết kế mỏng nhẹ', 40000000, 'Điện thoại di động'),
-(5, 'SS glaxy Z phone 3', 'tìm kiếm theo chiều sâu.png', 'Đắt', 10000000, 'Điện thoại di động');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -139,19 +150,14 @@ ALTER TABLE `nguoidung`
 --
 ALTER TABLE `phiendaugia`
   ADD PRIMARY KEY (`MaPhien`),
-  ADD KEY `loaihang` (`MaLoaiSP`);
+  ADD KEY `loaihang` (`MaLoaiSP`),
+  ADD KEY `idban` (`Id`);
 
 --
 -- Chỉ mục cho bảng `qlytaikhoanadmin`
 --
 ALTER TABLE `qlytaikhoanadmin`
   ADD PRIMARY KEY (`idad`);
-
---
--- Chỉ mục cho bảng `sanpham`
---
-ALTER TABLE `sanpham`
-  ADD PRIMARY KEY (`MaSP`);
 
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
@@ -161,31 +167,25 @@ ALTER TABLE `sanpham`
 -- AUTO_INCREMENT cho bảng `loaisp`
 --
 ALTER TABLE `loaisp`
-  MODIFY `MaLoaiSP` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `MaLoaiSP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `nguoidung`
 --
 ALTER TABLE `nguoidung`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `phiendaugia`
 --
 ALTER TABLE `phiendaugia`
-  MODIFY `MaPhien` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `MaPhien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT cho bảng `qlytaikhoanadmin`
 --
 ALTER TABLE `qlytaikhoanadmin`
   MODIFY `idad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10010;
-
---
--- AUTO_INCREMENT cho bảng `sanpham`
---
-ALTER TABLE `sanpham`
-  MODIFY `MaSP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -195,7 +195,7 @@ ALTER TABLE `sanpham`
 -- Các ràng buộc cho bảng `phiendaugia`
 --
 ALTER TABLE `phiendaugia`
-  ADD CONSTRAINT `loaisp` FOREIGN KEY (`MaLoaiSP`) REFERENCES `loaisp` (`MaLoaiSP`);
+  ADD CONSTRAINT `loaihang` FOREIGN KEY (`MaLoaiSP`) REFERENCES `loaisp` (`MaLoaiSP`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
